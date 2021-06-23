@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EXport_EXcel_MVC.Models.tbl_registration>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.e)*@
+            Email
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ContactName)*@
+            Password
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ContactTitle)*@
+            Name
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Address)*@
+            Address
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.City)*@
+            City
+        </th>
+        
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+             
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>
+@using (Html.BeginForm("Export", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Export" />
+}
+
+
